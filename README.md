@@ -288,20 +288,6 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ---
 
-## 👤 Contact
-
-**Anoushka**
-
-- GitHub: [@your-username](https://github.com/your-username)
-- LinkedIn: [Your LinkedIn](https://linkedin.com/in/your-profile)
-- Email: your.email@example.com
-
-**Project Link**: [https://github.com/your-username/song-popularity-predictor](https://github.com/your-username/song-popularity-predictor)
-
-**Live Demo**: [https://your-app.streamlit.app](https://your-app.streamlit.app)
-
----
-
 ## 🙏 Acknowledgments
 
 - Spotify for providing the audio features API
