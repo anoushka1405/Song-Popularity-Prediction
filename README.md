@@ -7,8 +7,6 @@
 [![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 [![Status](https://img.shields.io/badge/Status-Active-success.svg)]()
 
-**Live Demo:** [Coming Soon - Deploy your app!]
-
 ---
 
 ## 📋 Table of Contents
