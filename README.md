@@ -297,17 +297,9 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ---
 
-## ⭐ Star History
-
-If you find this project useful, please consider giving it a star! ⭐
-
-[![Star History Chart](https://api.star-history.com/svg?repos=your-username/song-popularity-predictor&type=Date)](https://star-history.com/#your-username/song-popularity-predictor&Date)
-
----
-
 <div align="center">
 
-**Made with ❤️ by Anoushka**
+**Made with Passion, by Anoushka**
 
 *A portfolio project demonstrating end-to-end ML capabilities*
 
