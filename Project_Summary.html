@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Song Popularity Analysis - Project Summary</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: #2d3436;
+            /* Aesthetic Deep Purple/Midnight Blue Gradient */
+            background: linear-gradient(135deg, #0f0c29 0%, #302b63 50%, #24243e 100%);
+            padding: 40px 20px;
+        }
+        
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.98);
+            border-radius: 30px;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.4);
+            overflow: hidden;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        header {
+            background: linear-gradient(to right, #6a11cb 0%, #2575fc 100%);
+            color: white;
+            padding: 80px 40px;
+            text-align: center;
+            position: relative;
+        }
+        
+        header h1 {
+            font-size: 3.5em;
+            font-weight: 700;
+            letter-spacing: -1px;
+            margin-bottom: 15px;
+        }
+        
+        header p {
+            font-size: 1.2em;
+            font-weight: 300;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            opacity: 0.9;
+        }
+        
+        .content {
+            padding: 60px 50px;
+        }
+        
+        .section {
+            margin-bottom: 60px;
+        }
+        
+        h2 {
+            color: #4834d4;
+            font-size: 2.2em;
+            font-weight: 700;
+            margin-bottom: 30px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        h2::after {
+            content: '';
+            flex: 1;
+            height: 2px;
+            background: #eee;
+            margin-left: 20px;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 25px;
+        }
+        
+        .stat-card {
+            background: #ffffff;
+            border: 1px solid #f0f0f0;
+            padding: 35px 20px;
+            border-radius: 24px;
+            text-align: center;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        
+        .stat-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(106, 17, 203, 0.2);
+            border-color: #6a11cb;
+        }
+        
+        .stat-number {
+            font-size: 3.2em;
+            font-weight: 700;
+            background: -webkit-linear-gradient(#6a11cb, #2575fc);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 5px;
+        }
+        
+        .stat-label {
+            font-size: 0.95em;
+            color: #636e72;
+            font-weight: 500;
+            text-transform: uppercase;
+        }
+        
+        .features-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+        
+        .feature-item {
+            background: #fff;
+            padding: 30px;
+            border-radius: 20px;
+            border: 1px solid #f1f2f6;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+            transition: all 0.3s ease;
+        }
+        
+        .feature-item:hover {
+            background: #fdfdfd;
+            border-left: 6px solid #2575fc;
+            padding-left: 24px;
+        }
+        
+        .feature-item h3 {
+            color: #2d3436;
+            font-size: 1.3em;
+            margin-bottom: 12px;
+            font-weight: 600;
+        }
+
+        .feature-item p {
+            color: #636e72;
+            font-size: 0.95em;
+        }
+        
+        .model-comparison {
+            overflow-x: auto;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+        }
+        
+        th {
+            background: #f8f9fa;
+            color: #2d3436;
+            font-weight: 600;
+            padding: 20px;
+            text-align: left;
+            font-size: 0.9em;
+            text-transform: uppercase;
+        }
+        
+        td {
+            padding: 20px;
+            border-top: 1px solid #f1f2f6;
+            color: #2d3436;
+        }
+        
+        .winner {
+            background: rgba(37, 117, 252, 0.05) !important;
+        }
+
+        .winner td:first-child {
+            color: #2575fc;
+            font-weight: 700;
+        }
+        
+        .badge {
+            background: #ebedff;
+            color: #2575fc;
+            padding: 6px 16px;
+            border-radius: 50px;
+            font-size: 0.85em;
+            font-weight: 600;
+        }
+        
+        .highlight-box {
+            background: #f9f9ff;
+            padding: 40px;
+            border-radius: 24px;
+            border: 1px dashed #6a11cb;
+        }
+        
+        .highlight-box h3 {
+            color: #6a11cb;
+            margin-bottom: 25px;
+            font-size: 1.5em;
+        }
+
+        .highlight-box li {
+            list-style: none;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: #4b4b4b;
+        }
+
+        .highlight-box li::before {
+            content: '✦';
+            color: #6a11cb;
+            font-weight: bold;
+        }
+        
+        footer {
+            background: #1e1e2f;
+            color: white;
+            text-align: center;
+            padding: 50px;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            padding: 18px 45px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1em;
+            transition: all 0.3s;
+            margin: 10px;
+        }
+        
+        .btn-primary {
+            background: white;
+            color: #6a11cb;
+        }
+        
+        .btn-outline {
+            border: 2px solid white;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <p>B.Tech Semester III | Machine Learning Project</p>
+            <h1>🎵 Song Popularity Analysis</h1>
+            <div style="margin-top: 25px; font-weight: 300;">Anoushka | February 2026</div>
+        </header>
+        
+        <div class="content">
+            <section class="section">
+                <h2> Final Results</h2>
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-number">114K+</div>
+                        <div class="stat-label">Tracks Analyzed</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">77.5%</div>
+                        <div class="stat-label">XGBoost Accuracy</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">0.859</div>
+                        <div class="stat-label">Peak ROC-AUC</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">84%</div>
+                        <div class="stat-label">Popular Song Recall</div>
+                    </div>
+                </div>
+            </section>
+            
+            <section class="section">
+                <h2>✨ Technical Highlights</h2>
+                <div class="features-list">
+                    <div class="feature-item">
+                        <h3>🔧 Engineered Features</h3>
+                        <p>Implemented <b>Vocal Intensity</b> and <b>Energy Balance</b> to capture the complex synergy between audio signals.</p>
+                    </div>
+                    <div class="feature-item">
+                        <h3>🤖 Advanced Ensemble</h3>
+                        <p>Moved beyond linear baselines to <b>XGBoost</b>, capturing non-linear relationships with high precision.</p>
+                    </div>
+                    <div class="feature-item">
+                        <h3>🔍 Explainable AI</h3>
+                        <p>Used <b>SHAP Analysis</b> to demystify the "black box," visualizing how each feature pulls the prediction toward popularity.</p>
+                    </div>
+                    <div class="feature-item">
+                        <h3>🎯 Precision Tuning</h3>
+                        <p>Shifted decision thresholds to <b>0.4436</b> to optimize the F1-Score and maximize hit discovery.</p>
+                    </div>
+                </div>
+            </section>
+            
+            <section class="section">
+                <h2>🏆 Model Leaderboard</h2>
+                <div class="model-comparison">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Model</th>
+                                <th>Accuracy</th>
+                                <th>ROC-AUC</th>
+                                <th>F1-Score</th>
+                                <th>Stability</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="winner">
+                                <td>XGBoost (Champion)</td>
+                                <td>0.775</td>
+                                <td>0.859</td>
+                                <td>0.780*</td>
+                                <td><span class="badge">+/- 0.006</span></td>
+                            </tr>
+                            <tr>
+                                <td>Gradient Boosting</td>
+                                <td>0.766</td>
+                                <td>0.850</td>
+                                <td>0.760</td>
+                                <td><span class="badge">+/- 0.007</span></td>
+                            </tr>
+                            <tr>
+                                <td>Random Forest</td>
+                                <td>0.761</td>
+                                <td>0.839</td>
+                                <td>0.771</td>
+                                <td><span class="badge">+/- 0.010</span></td>
+                            </tr>
+                            <tr>
+                                <td>Logistic Regression</td>
+                                <td>0.577</td>
+                                <td>0.621</td>
+                                <td>0.590</td>
+                                <td><span class="badge">Baseline</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <p style="margin-top: 20px; font-size: 0.85em; color: #95a5a6; font-style: italic;">
+                    * Scores validated via 5-Fold Stratified Cross-Validation for robustness.
+                </p>
+            </section>
+            
+            <section class="section">
+                <h2>🔑 The "Hit" Ingredients</h2>
+                <div class="highlight-box">
+                    <h3>What Drives Popularity?</h3>
+                    <ul>
+                        <li><b>Genre Encodings:</b> The strongest predictor of initial popularity potential.</li>
+                        <li><b>Emotional Valence:</b> Listeners prefer positive, upbeat tones over somber ones.</li>
+                        <li><b>Danceability:</b> Rhythmic consistency remains a staple of chart-topping tracks.</li>
+                        <li><b>Energy Balance:</b> Success favors a balanced mix of organic and electronic production.</li>
+                        <li><b>Strategic Length:</b> Modern streaming favors brevity; 2.5–3.5 mins is the current sweet spot.</li>
+                    </ul>
+                </div>
+            </section>
+        </div>
+        
+        <footer>
+            <h3 style="margin-bottom: 25px;">Final Pipeline Validated 🚀</h3>
+            <div style="margin-bottom: 40px;">
+                <a href="#" class="cta-button btn-primary">📓 View Notebook</a>
+                <a href="#" class="cta-button btn-outline">📄 Project Report</a>
+            </div>
+            <p style="font-size: 0.9em; opacity: 0.6;">ML Project | AIML | Class of 2028</p>
+        </footer>
+    </div>
+</body>
+</html>
