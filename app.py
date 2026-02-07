@@ -49,6 +49,15 @@ st.set_page_config(
 # Custom CSS for better styling
 st.markdown("""
     <style>
+            
+    body, .main, .stMarkdown, .stText, .stDataFrame {
+    color: #333333; /* dark gray text everywhere */
+    }
+
+    .success-box, .info-box, .warning-box, .champion-box {
+    color: #333333; /* override white text */
+    }
+
     .main {
         padding: 0rem 1rem;
     }
