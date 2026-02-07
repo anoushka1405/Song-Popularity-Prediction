@@ -33,6 +33,8 @@ This project analyzes 114,000 songs from Spotify to predict whether a song will 
 
 ### Live Demo : https://song-popularity-prediction-f4p3qzfezzdjac44wesjzd.streamlit.app/
 
+### Project Summary : https://anoushka1405.github.io/Song-Popularity-Prediction/Project_Summary.html
+
 ### Key Highlights
 
 - 📊 **Comprehensive EDA** with 15+ visualizations
