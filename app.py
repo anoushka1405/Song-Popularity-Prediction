@@ -73,6 +73,7 @@ st.markdown("""
         background-color: #d4edda;
         border-left: 5px solid #28a745;
         margin: 20px 0;
+        color: #1e3c72;
     }
     .info-box {
         padding: 20px;
@@ -80,6 +81,7 @@ st.markdown("""
         background-color: #d1ecf1;
         border-left: 5px solid #17a2b8;
         margin: 20px 0;
+        color: #333333;
     }
     .warning-box {
         padding: 20px;
@@ -87,6 +89,7 @@ st.markdown("""
         background-color: #fff3cd;
         border-left: 5px solid #ffc107;
         margin: 20px 0;
+        color: #333333;
     }
     .champion-box {
         padding: 20px;
@@ -94,6 +97,7 @@ st.markdown("""
         background-color: #fff9e6;
         border: 3px solid #ffd700;
         margin: 20px 0;
+        color: #333333
     }
     </style>
     """, unsafe_allow_html=True)
@@ -101,26 +105,21 @@ st.markdown("""
 # Cache functions for performance
 @st.cache_data
 def load_data(file_path):
-    """Load and preprocess the dataset"""
+    """Load dataset from uploaded file or path (CSV/Excel only)."""
     try:
-        # Check if it's an UploadedFile object or a string path
-        if hasattr(file_path, 'name'):
-            # It's an UploadedFile object
-            if file_path.name.endswith('.xlsx'):
-                data = pd.read_excel(file_path)
-            elif file_path.name.endswith('.csv'):
-                data = pd.read_csv(file_path)
-            else:
-                data = pd.read_excel(file_path)
+        # Get filename string (works for UploadedFile or plain path)
+        filename = file_path.name if hasattr(file_path, 'name') else file_path
+
+        if filename.endswith(".csv"):
+            data = pd.read_csv(file_path)
+        elif filename.endswith(".xlsx"):
+            data = pd.read_excel(file_path)
         else:
-            # It's a string path
-            if file_path.endswith('.xlsx'):
-                data = pd.read_excel(file_path)
-            elif file_path.endswith('.csv'):
-                data = pd.read_csv(file_path)
-            else:
-                data = pd.read_excel(file_path)
+            st.error("Unsupported file type. Please upload a CSV or Excel file.")
+            return None
+
         return data
+
     except Exception as e:
         st.error(f"Error loading data: {e}")
         return None
@@ -267,7 +266,7 @@ def main():
     
     # Sidebar
     with st.sidebar:
-        st.image("https://via.placeholder.com/300x150/667eea/ffffff?text=Song+Analytics", 
+        st.image("download-1.jpg", 
                 width=300)
         st.header("📊 Navigation")
         page = st.radio("Select Page:", 
@@ -300,7 +299,7 @@ def main():
         # Try to load default dataset
         try:
             # Update this path to your dataset location
-            data = load_data("dataset.xlsx")
+            data = load_data("dataset 3 2.xlsx")
             st.sidebar.success("✅ Using default dataset")
         except:
             data = None
@@ -403,7 +402,7 @@ def show_home(data):
                       color_discrete_sequence=['#667eea'])
     fig.add_vline(x=data['popularity'].median(), line_dash="dash", 
                  line_color="red", annotation_text=f"Median: {data['popularity'].median():.0f}")
-    st.plotly_chart(fig, use_column_width=True)
+    st.plotly_chart(fig)
     
     st.markdown("---")
     
@@ -459,8 +458,8 @@ def show_data_explorer(data):
     
     # Show sample data
     st.subheader("Sample Data")
-    st.dataframe(data.head(10), use_column_width=True)
-    
+    st.dataframe(data.head(10))
+
     st.markdown("---")
     
     # Feature distributions
@@ -478,7 +477,7 @@ def show_data_explorer(data):
         fig = px.histogram(data, x=selected_feature, nbins=50,
                           title=f'Distribution of {selected_feature.capitalize()}',
                           color_discrete_sequence=['#667eea'])
-        st.plotly_chart(fig, use_column_width=True)
+        st.plotly_chart(fig)
     
     with col2:
         # Box plot by popularity
@@ -487,7 +486,7 @@ def show_data_explorer(data):
                     labels={'is_popular': 'Popular', selected_feature: selected_feature.capitalize()},
                     color='is_popular',
                     color_discrete_map={0: '#FF6B6B', 1: '#4ECDC4'})
-        st.plotly_chart(fig, use_column_width=True)
+        st.plotly_chart(fig)
     
     st.markdown("---")
     
@@ -507,7 +506,7 @@ def show_data_explorer(data):
         textfont={"size": 10}
     ))
     fig.update_layout(title='Feature Correlation Matrix', height=600)
-    st.plotly_chart(fig, use_column_width=True)
+    st.plotly_chart(fig)
     
     st.markdown("---")
     
@@ -523,7 +522,7 @@ def show_data_explorer(data):
                     title='Top 15 Most Common Genres',
                     labels={'x': 'Number of Songs', 'y': 'Genre'},
                     color_discrete_sequence=['#764ba2'])
-        st.plotly_chart(fig, use_column_width=True)
+        st.plotly_chart(fig)
     
     with col2:
         # Genre popularity
@@ -532,7 +531,7 @@ def show_data_explorer(data):
                     title='Top 15 Genres by Average Popularity',
                     labels={'x': 'Average Popularity', 'y': 'Genre'},
                     color_discrete_sequence=['#667eea'])
-        st.plotly_chart(fig, use_column_width=True)
+        st.plotly_chart(fig)
 
 def show_model_training(data, features):
     """Model training page"""
@@ -601,7 +600,6 @@ def show_model_training(data, features):
                     'Recall': '{:.4f}',
                     'F1-Score': '{:.4f}'
                 }), 
-                use_column_width=True
             )
             
             # Visualize comparison
@@ -617,7 +615,7 @@ def show_model_training(data, features):
                            color_continuous_scale='Blues',
                            text='Accuracy')
                 fig.update_traces(texttemplate='%{text:.3f}', textposition='outside')
-                st.plotly_chart(fig, use_column_width=True)
+                st.plotly_chart(fig)
             
             with col2:
                 fig = px.bar(results, x='Model', y='ROC-AUC',
@@ -626,7 +624,7 @@ def show_model_training(data, features):
                            color_continuous_scale='Greens',
                            text='ROC-AUC')
                 fig.update_traces(texttemplate='%{text:.3f}', textposition='outside')
-                st.plotly_chart(fig, use_column_width=True)
+                st.plotly_chart(fig)
             
             # F1-Score and Recall
             col1, col2 = st.columns(2)
@@ -638,7 +636,7 @@ def show_model_training(data, features):
                            color_continuous_scale='Purples',
                            text='F1-Score')
                 fig.update_traces(texttemplate='%{text:.3f}', textposition='outside')
-                st.plotly_chart(fig, use_column_width=True)
+                st.plotly_chart(fig)
             
             with col2:
                 fig = px.bar(results, x='Model', y='Recall',
@@ -647,7 +645,7 @@ def show_model_training(data, features):
                            color_continuous_scale='Oranges',
                            text='Recall')
                 fig.update_traces(texttemplate='%{text:.3f}', textposition='outside')
-                st.plotly_chart(fig, use_column_width=True)
+                st.plotly_chart(fig)
             
             st.markdown("---")
             
@@ -681,7 +679,7 @@ def show_model_training(data, features):
                 hovermode='x unified'
             )
             
-            st.plotly_chart(fig, use_column_width=True)
+            st.plotly_chart(fig)
             
             st.markdown("---")
             
@@ -712,7 +710,7 @@ def show_model_training(data, features):
                         height=300
                     )
                     
-                    st.plotly_chart(fig, use_column_width=True)
+                    st.plotly_chart(fig)
             
             # Store in session state
             st.session_state['models'] = models
@@ -927,7 +925,7 @@ def show_predictions(data, features, le_genre):
                     }
                 ))
                 fig.update_layout(height=250)
-                st.plotly_chart(fig, use_column_width=True)
+                st.plotly_chart(fig)
         
         # Consensus summary
         st.markdown("---")
@@ -990,7 +988,7 @@ def show_insights(data, features):
                     color='importance',
                     color_continuous_scale='Viridis')
         fig.update_layout(yaxis={'categoryorder': 'total ascending'}, height=500)
-        st.plotly_chart(fig, use_column_width=True)
+        st.plotly_chart(fig)
     
     # XGBoost feature importance if available
     if 'XGBoost' in models:
@@ -1010,7 +1008,7 @@ def show_insights(data, features):
                     color='importance',
                     color_continuous_scale='YlOrRd')
         fig.update_layout(yaxis={'categoryorder': 'total ascending'}, height=500)
-        st.plotly_chart(fig, use_column_width=True)
+        st.plotly_chart(fig)
     
     st.markdown("---")
     
@@ -1029,7 +1027,7 @@ def show_insights(data, features):
                 color_continuous_scale='RdBu_r',
                 color_continuous_midpoint=0)
     fig.update_layout(height=500)
-    st.plotly_chart(fig, use_column_width=True)
+    st.plotly_chart(fig)
     
     st.markdown("---")
     
@@ -1058,7 +1056,7 @@ def show_insights(data, features):
                        color_discrete_map={0: '#FF6B6B', 1: '#4ECDC4'},
                        box=True)
     
-    st.plotly_chart(fig, use_column_width=True)
+    st.plotly_chart(fig)
     
     st.markdown("---")
     
@@ -1119,7 +1117,7 @@ def show_insights(data, features):
                     color='avg_popularity',
                     color_continuous_scale='Viridis')
         fig.update_layout(yaxis={'categoryorder': 'total ascending'}, height=600)
-        st.plotly_chart(fig, use_column_width=True)
+        st.plotly_chart(fig)
     
     with col2:
         # Genre popularity vs count
@@ -1130,7 +1128,7 @@ def show_insights(data, features):
                         color='avg_popularity',
                         color_continuous_scale='Viridis')
         fig.update_layout(height=600)
-        st.plotly_chart(fig, use_column_width=True)
+        st.plotly_chart(fig)
     
     st.markdown("---")
     
@@ -1166,7 +1164,7 @@ def show_insights(data, features):
             title="Model Performance Radar Chart"
         )
         
-        st.plotly_chart(fig, use_column_width=True)
+        st.plotly_chart(fig)
 
 if __name__ == "__main__":
     main()
