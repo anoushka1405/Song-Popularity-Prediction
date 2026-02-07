@@ -58,6 +58,18 @@ st.markdown("""
         border-radius: 10px;
         box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     }
+
+    .stMetric label {
+    color: #1e3c72 !important;   /* dark blue for labels */
+    font-weight: bold;
+    }
+
+    .stMetric div[data-testid="stMetricValue"] {
+    color: #333333 !important;   /* dark gray for values */
+    font-size: 1.2rem;
+}
+
+    
     h1 {
         color: #1e3c72;
         padding-bottom: 10px;
