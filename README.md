@@ -31,6 +31,8 @@
 
 This project analyzes 58,000+ songs from Spotify to predict whether a song will be popular based on its audio features. Using machine learning algorithms, the system achieves **75% ROC-AUC score** and provides an interactive web application for real-time predictions.
 
+### Live Demo : https://song-popularity-prediction-f4p3qzfezzdjac44wesjzd.streamlit.app/
+
 ### Key Highlights
 
 - 📊 **Comprehensive EDA** with 15+ visualizations
