@@ -949,8 +949,7 @@ def show_predictions(data, features, le_genre):
         col1, col2 = st.columns([2, 1])
         
         with col1:
-            st.dataframe(summary_df.style.format({'Confidence': '{:.1%}'}), 
-                        use_column_width=True)
+            st.dataframe(summary_df.style.format({'Confidence': '{:.1%}'}))
         
         with col2:
             if popular_count >= len(models) / 2:
