@@ -1,6 +1,5 @@
 """
 🎵 Song Popularity Predictor - Interactive Web App
-===================================================
 
 A professional Streamlit application for predicting song popularity
 using machine learning models trained on Spotify audio features.
@@ -396,12 +395,12 @@ def show_home(data):
     with col2:
         st.markdown("### 🎯 Key Features")
         st.markdown("""
-        - ✅ **Multiple ML Models**: Compare Logistic Regression, Random Forest, Gradient Boosting, and XGBoost
-        - ✅ **Interactive Visualizations**: Explore data with dynamic charts
-        - ✅ **Real-time Predictions**: Input song features and get instant predictions
-        - ✅ **Model Explainability**: Understand which features drive popularity
-        - ✅ **Professional Metrics**: ROC-AUC, F1-Score, Confusion Matrix
-        - ✅ **Feature Engineering**: Advanced features like Vocal Intensity & Energy Balance
+        -  **Multiple ML Models**: Compare Logistic Regression, Random Forest, Gradient Boosting, and XGBoost
+        -  **Interactive Visualizations**: Explore data with dynamic charts
+        -  **Real-time Predictions**: Input song features and get instant predictions
+        -  **Model Explainability**: Understand which features drive popularity
+        -  **Professional Metrics**: ROC-AUC, F1-Score, Confusion Matrix
+        -  **Feature Engineering**: Advanced features like Vocal Intensity & Energy Balance
         """)
     
     st.markdown("---")
@@ -581,7 +580,7 @@ def show_model_training(data, features):
         with st.spinner("Training models... This may take a minute..."):
             models, results, y_test_data = train_models(X_train, y_train, X_test, y_test)
             
-            st.success("✅ Models trained successfully!")
+            st.success(" Models trained successfully!")
             
             st.markdown("---")
             st.subheader("📊 Model Leaderboard")
@@ -903,7 +902,7 @@ def show_predictions(data, features, le_genre):
                 if prediction == 1:
                     st.markdown(f"""
                     <div class="success-box">
-                        <h3 style="color: #28a745;">✅ {name}</h3>
+                        <h3 style="color: #28a745;"> {name}</h3>
                         <p style="font-size: 24px; font-weight: bold;">POPULAR!</p>
                         <p>Confidence: {probability*100:.1f}%</p>
                     </div>
@@ -911,7 +910,7 @@ def show_predictions(data, features, le_genre):
                 else:
                     st.markdown(f"""
                     <div class="warning-box">
-                        <h3 style="color: #856404;">❌ {name}</h3>
+                        <h3 style="color: #856404;"> {name}</h3>
                         <p style="font-size: 24px; font-weight: bold;">Not Popular</p>
                         <p>Confidence: {(1-probability)*100:.1f}%</p>
                     </div>
@@ -1095,7 +1094,7 @@ def show_insights(data, features):
     with col2:
         st.markdown("""
         <div class="success-box">
-            <h4>✅ Model Performance</h4>
+            <h4> Model Performance</h4>
             <ul>
                 <li>Best model (XGBoost) achieves <strong>77.5% accuracy</strong></li>
                 <li><strong>ROC-AUC of 0.859</strong> shows excellent discrimination</li>
