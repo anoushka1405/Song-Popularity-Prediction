@@ -9,24 +9,6 @@
 
 ---
 
-## 📋 Table of Contents
-
-- [Overview](#overview)
-- [Features](#features)
-- [Demo](#demo)
-- [Installation](#installation)
-- [Usage](#usage)
-- [Project Structure](#project-structure)
-- [Models & Performance](#models--performance)
-- [Technologies](#technologies)
-- [Results](#results)
-- [Future Improvements](#future-improvements)
-- [Contributing](#contributing)
-- [License](#license)
-- [Contact](#contact)
-
----
-
 ## 🎯 Overview
 
 This project analyzes 114,000 songs from Spotify to predict whether a song will be popular based on its audio features. Using machine learning algorithms, the system achieves **75% ROC-AUC score** and provides an interactive web application for real-time predictions.
@@ -37,25 +19,25 @@ This project analyzes 114,000 songs from Spotify to predict whether a song will 
 
 ### Key Highlights
 
-- 📊 **Comprehensive EDA** with 15+ visualizations
-- 🤖 **3 ML Models** trained and compared
-- 🎨 **Interactive Web App** built with Streamlit
-- 📈 **Feature Engineering** with 6 custom features
-- 🎯 **90% Recall** for popular songs
-- 🌐 **Deployment Ready** for Streamlit Cloud
+-  **Comprehensive EDA** with 15+ visualizations
+-  **3 ML Models** trained and compared
+-  **Interactive Web App** built with Streamlit
+-  **Feature Engineering** with 6 custom features
+-  **90% Recall** for popular songs
+-  **Deployment Ready** for Streamlit Cloud
 
 ---
 
-## ✨ Features
+## Features
 
-### 🏠 Interactive Web Application
+### Interactive Web Application
 - **Data Explorer**: Visualize distributions, correlations, and genre analysis
 - **Model Training**: Train and compare multiple ML models
 - **Live Predictions**: Real-time popularity predictions with confidence scores
 - **Model Insights**: Feature importance and correlation analysis
 - **Professional UI**: Clean, intuitive interface with Plotly visualizations
 
-### 🔬 Machine Learning Pipeline
+###  Machine Learning Pipeline
 - Data preprocessing and cleaning
 - Feature engineering (6 custom features)
 - Class imbalance handling
@@ -63,7 +45,7 @@ This project analyzes 114,000 songs from Spotify to predict whether a song will 
 - Threshold tuning for optimal recall
 - Comprehensive evaluation metrics
 
-### 📊 Analysis & Visualization
+###  Analysis & Visualization
 - Popularity distribution analysis
 - Feature correlation heatmaps
 - Genre performance comparison
@@ -72,10 +54,10 @@ This project analyzes 114,000 songs from Spotify to predict whether a song will 
 
 ---
 
-## 🖼️ Demo
+## Demo
 
 ### Home Page
-*Beautiful overview with dataset statistics and popularity distribution*
+*Overview with dataset statistics and popularity distribution*
 
 ### Data Explorer
 *Interactive visualizations showing feature distributions and correlations*
@@ -88,7 +70,7 @@ This project analyzes 114,000 songs from Spotify to predict whether a song will 
 
 ---
 
-## 🚀 Installation
+## Installation
 
 ### Prerequisites
 - Python 3.8 or higher
@@ -122,64 +104,6 @@ Navigate to `http://localhost:8501`
 
 ---
 
-## 💻 Usage
-
-### Running the Jupyter Notebook
-```bash
-jupyter notebook Song_Popularity_Analysis_Complete.ipynb
-```
-
-### Running the Streamlit App
-```bash
-streamlit run app.py
-```
-
-### Running XGBoost Analysis
-```bash
-python xgboost_shap_analysis.py
-```
-
-### Example Prediction
-```python
-# Input features
-song_features = {
-    'danceability': 0.75,
-    'energy': 0.85,
-    'valence': 0.65,
-    'tempo': 128,
-    'loudness': -5.0,
-    # ... other features
-}
-
-# Get prediction
-prediction = model.predict(song_features)
-# Output: "Popular" with 87% confidence
-```
-
----
-
-## 📁 Project Structure
-
-```
-song-popularity-predictor/
-│
-├── app.py                                    # Streamlit web application
-├── Song_Popularity_Analysis_Complete.ipynb  # Main analysis notebook
-├── xgboost_shap_analysis.py                 # XGBoost & SHAP analysis
-├── requirements.txt                          # Python dependencies
-├── README.md                                 # This file
-├── STREAMLIT_GUIDE.md                       # Detailed app guide
-│
-├── outputs/
-│   ├── Song_Popularity_Analysis_Report.docx # Professional report
-│   └── Project_Summary.html                 # Visual summary
-│
-└── data/
-    └── dataset.xlsx                         # Dataset (not included)
-```
-
----
-
 ## 🤖 Models & Performance
 
 ### Models Implemented
@@ -201,7 +125,7 @@ song-popularity-predictor/
 
 ---
 
-## 🛠️ Technologies
+## Technologies
 
 ### Core Technologies
 ![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)
@@ -219,7 +143,7 @@ song-popularity-predictor/
 
 ---
 
-## 📊 Results
+## Results
 
 ### Top 5 Most Important Features
 1. **Genre** - Most influential predictor
@@ -237,37 +161,25 @@ song-popularity-predictor/
 - 🎹 **Less Acoustic**: Electronic production outperforms acoustic
 
 ### Business Impact
-- ✅ Helps streaming platforms improve recommendations
-- ✅ Guides artists on song characteristics for success
-- ✅ Assists record labels in identifying potential hits
-- ✅ Optimizes playlist curation for engagement
+-  Helps streaming platforms improve recommendations
+-  Guides artists on song characteristics for success
+-  Assists record labels in identifying potential hits
+-  Optimizes playlist curation for engagement
 
 ---
 
-## 🔮 Future Improvements
+## Future Improvements
 
-### Short Term
-- [ ] Add XGBoost model to Streamlit app
-- [ ] Implement SHAP explanations in UI
-- [ ] Add batch prediction upload feature
-- [ ] Create downloadable prediction reports
-
-### Medium Term
 - [ ] Incorporate temporal features (release date, season)
 - [ ] Add artist popularity aggregation
-- [ ] Implement hyperparameter tuning in UI
-- [ ] Create model retraining pipeline
-
-### Long Term
 - [ ] Deploy as REST API with FastAPI
 - [ ] Add deep learning models (Neural Networks)
 - [ ] Incorporate social media engagement data
 - [ ] Build recommendation system
-- [ ] Add A/B testing framework
 
 ---
 
-## 🤝 Contributing
+## Contributing
 
 Contributions are welcome! Here's how you can help:
 
@@ -278,21 +190,21 @@ Contributions are welcome! Here's how you can help:
 5. Open a Pull Request
 
 ### Areas for Contribution
-- 🐛 Bug fixes and improvements
-- 📊 Additional visualizations
-- 🤖 New machine learning models
-- 📝 Documentation enhancements
-- ✨ UI/UX improvements
+-  Bug fixes and improvements
+- Additional visualizations
+-  New machine learning models
+- Documentation enhancements
+- UI/UX improvements
 
 ---
 
-## 📄 License
+## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 ---
 
-## 🙏 Acknowledgments
+## Acknowledgments
 
 - Spotify for providing the audio features API
 - Scikit-learn community for excellent ML tools
