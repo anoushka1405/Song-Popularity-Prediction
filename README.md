@@ -11,7 +11,7 @@
 
 ## 🎯 Overview
 
-This project analyzes 114,000 songs from Spotify to predict whether a song will be popular based on its audio features. Using machine learning algorithms, the system achieves **75% ROC-AUC score** and provides an interactive web application for real-time predictions.
+This project analyzes 114,000 Spotify songs to predict song popularity using audio features like energy, danceability, and genre. An end-to-end ML pipeline compares 4 models, with a threshold-tuned XGBoost achieving 77.5% accuracy, 0.859 ROC-AUC, and 84% recall for popular songs. Includes an interactive Streamlit web app for real-time predictions and feature exploration.
 
 ### Live Demo : https://song-popularity-prediction-f4p3qzfezzdjac44wesjzd.streamlit.app/
 
