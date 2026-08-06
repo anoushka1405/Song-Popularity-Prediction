@@ -1,45 +1,22 @@
-# 🎵 Song Popularity Predictor
+# Song Popularity Predictor
 
 > An end-to-end machine learning project that predicts song popularity using Spotify audio features
-
-[![Python](https://img.shields.io/badge/Python-3.8+-blue.svg)](https://www.python.org/downloads/)
-[![Streamlit](https://img.shields.io/badge/Streamlit-1.28+-red.svg)](https://streamlit.io/)
-[![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
-[![Status](https://img.shields.io/badge/Status-Active-success.svg)]()
-
 ---
 
-## 🎯 Overview
+## Overview
 
-This project analyzes 114,000 Spotify songs to predict song popularity using audio features like energy, danceability, and genre. An end-to-end ML pipeline compares 4 models, with a threshold-tuned XGBoost achieving 77.5% accuracy, 0.859 ROC-AUC, and 84% recall for popular songs. Includes an interactive Streamlit web app for real-time predictions and feature exploration.
+This project analyzes 114,000 Spotify songs to predict song popularity using audio features like energy, danceability, and genre. An end-to-end ML pipeline compares 4 models, with  XGBoost achieving 77.5% accuracy, 0.859 ROC-AUC, and 84% recall for popular songs. Includes an interactive Streamlit web app for real-time predictions and feature exploration.
 
-### Live Demo : https://song-popularity-prediction-f4p3qzfezzdjac44wesjzd.streamlit.app/
+- Live Demo : https://song-popularity-prediction-f4p3qzfezzdjac44wesjzd.streamlit.app/
 
-### Project Summary : https://anoushka1405.github.io/Song-Popularity-Prediction/Project_Summary.html
+- Project Summary : https://anoushka1405.github.io/Song-Popularity-Prediction/Project_Summary.html
 
-### Key Highlights
-
--  **Comprehensive EDA** with 15+ visualizations
--  **3 ML Models** trained and compared
--  **Interactive Web App** built with Streamlit
--  **Feature Engineering** with 6 custom features
--  **90% Recall** for popular songs
--  **Deployment Ready** for Streamlit Cloud
-
----
 
 ## Features
 
-### Interactive Web Application
-- **Data Explorer**: Visualize distributions, correlations, and genre analysis
-- **Model Training**: Train and compare multiple ML models
-- **Live Predictions**: Real-time popularity predictions with confidence scores
-- **Model Insights**: Feature importance and correlation analysis
-- **Professional UI**: Clean, intuitive interface with Plotly visualizations
-
 ###  Machine Learning Pipeline
 - Data preprocessing and cleaning
-- Feature engineering (6 custom features)
+- Feature engineering 
 - Class imbalance handling
 - Model training with cross-validation
 - Threshold tuning for optimal recall
@@ -54,21 +31,6 @@ This project analyzes 114,000 Spotify songs to predict song popularity using aud
 
 ---
 
-## Demo
-
-### Home Page
-*Overview with dataset statistics and popularity distribution*
-
-### Data Explorer
-*Interactive visualizations showing feature distributions and correlations*
-
-### Model Training
-*Train multiple models and compare performance in real-time*
-
-### Make Predictions
-*Input song features and get instant predictions with confidence scores*
-
----
 
 ## Installation
 
@@ -153,54 +115,18 @@ Navigate to `http://localhost:8501`
 5. **Energy × Danceability** - Engineered feature (interaction effect)
 
 ### Key Insights
-- 🎸 **Genre Matters**: Pop, hip-hop, and electronic dominate
-- ⚡ **Energy Wins**: High-energy songs are 2x more likely to be popular
-- 💃 **Make It Danceable**: Danceability has strong positive correlation
-- 🔊 **Turn It Up**: Louder songs (>-5dB) perform better
-- ⏱️ **Sweet Spot**: 3-4 minute songs are optimal
-- 🎹 **Less Acoustic**: Electronic production outperforms acoustic
+- **Genre Matters**: Pop, hip-hop, and electronic dominate
+- **Energy Wins**: High-energy songs are 2x more likely to be popular
+- **Make It Danceable**: Danceability has strong positive correlation
+- **Turn It Up**: Louder songs (>-5dB) perform better
+- **Sweet Spot**: 3-4 minute songs are optimal
+- **Less Acoustic**: Electronic production outperforms acoustic
 
 ### Business Impact
 -  Helps streaming platforms improve recommendations
 -  Guides artists on song characteristics for success
 -  Assists record labels in identifying potential hits
 -  Optimizes playlist curation for engagement
-
----
-
-## Future Improvements
-
-- [ ] Incorporate temporal features (release date, season)
-- [ ] Add artist popularity aggregation
-- [ ] Deploy as REST API with FastAPI
-- [ ] Add deep learning models (Neural Networks)
-- [ ] Incorporate social media engagement data
-- [ ] Build recommendation system
-
----
-
-## Contributing
-
-Contributions are welcome! Here's how you can help:
-
-1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
-
-### Areas for Contribution
--  Bug fixes and improvements
-- Additional visualizations
--  New machine learning models
-- Documentation enhancements
-- UI/UX improvements
-
----
-
-## License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 ---
 
